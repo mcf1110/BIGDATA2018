@@ -78,9 +78,13 @@ Exercício 07: Implemente uma função collatzLen x que retorna o tamanho da lis
 collatzLen :: Integer -> Int
 collatzLen x = length $ takeWhile (>1) $ x: prox x
     where prox x = collatz x : (prox (collatz x))
+
+exercicio07 = collatzLen
     
 {-
 Exercício 08: Encontre o número x entre 1 e 1.000.000 que tem a maior sequência de Collatz. (Project Euler 14)
 -}
 projectEuler14 :: Integer
 projectEuler14 = maximumBy  (comparing collatzLen) [1..1000000]
+
+exercicio08 = projectEuler14
