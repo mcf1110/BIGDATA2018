@@ -1,5 +1,5 @@
 -- Exercícios sobre Funções
-module Atividade02 where
+module Lista02 where
 import Data.Char (digitToInt)
 {-
 Exercício 01: Crie uma função ehTriangulo que determina se três lados x, y, z podem formar um triângulo.
@@ -82,3 +82,13 @@ Exercício 08: Faça uma função que calcule o elemento (i,j) do triângulo de 
 -}
 pascal = coefBinomial
 exercicio08 = exercicio07
+
+main = do
+    putStrLn $ "Exercicio 01: " ++ show (exercicio01 3 4 5)
+    putStrLn $ "Exercicio 02: " ++ show (exercicio02 4 4 4)
+    putStrLn $ "Exercicio 03: " ++ show (exercicio03 9 12)
+    putStrLn $ "Exercicio 04: " ++ show (exercicio04 9)
+    putStrLn $ "Exercicio 05: " ++ show (exercicio05 9)
+    putStrLn $ "Exercicio 06: " ++ show (exercicio06 14)
+    putStrLn $ "Exercicio 07: " ++ show (exercicio07 2 1)
+    putStrLn $ "Exercicio 08: " ++ show (exercicio08 6 3)

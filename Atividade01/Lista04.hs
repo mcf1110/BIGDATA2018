@@ -1,5 +1,5 @@
 -- Exercícios sobre Matrizes
-module Atividade04 where
+module Lista04 where
 {-
 Exercício 01: Faça uma função que gere uma matriz identidade de tamanho n.
 -}
@@ -32,3 +32,9 @@ somaSecundaria m = sum [m !! i !! (size - i) | i <- [0..size] ]
     where size = length m - 1
 
 exercicio03 = somaSecundaria
+
+
+main = do
+    putStrLn $ "Exercicio 01: " ++ show (exercicio01 4)
+    putStrLn $ "Exercicio 02: " ++ show (exercicio02 [[1,2,3],[4,5,6],[7,8,9]])
+    putStrLn $ "Exercicio 03: " ++ show (exercicio03 [[1,2,3],[4,5,6],[7,8,9]])

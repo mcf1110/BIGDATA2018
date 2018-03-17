@@ -1,5 +1,5 @@
 -- Exercícios sobre ADT
-module Atividade05 where
+module Lista05 where
 
 import Data.List (find)
 

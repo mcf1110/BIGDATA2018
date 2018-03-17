@@ -1,5 +1,5 @@
 --Exercícios Básicos
-module Atividade01 where
+module Lista01 where
 import Data.Char (digitToInt)
 
 {-
@@ -96,3 +96,17 @@ Exercício 12: Dada a string “0123456789”, crie uma lista com os dígitos em
 -}
 exercicio12 :: String -> [Integer]
 exercicio12 = map (toInteger . digitToInt)
+
+main = do
+    putStrLn $ "Exercicio 01: " ++ show exercicio01
+    putStrLn $ "Exercicio 02: " ++ show (exercicio02 9)
+    putStrLn $ "Exercicio 03: " ++ show (exercicio03 9)
+    putStrLn $ "Exercicio 04: " ++ show (exercicio04 9)
+    putStrLn $ "Exercicio 05: " ++ show (exercicio05 9)
+    putStrLn $ "Exercicio 06: " ++ show (exercicio06 9)
+    putStrLn $ "Exercicio 07: " ++ show (exercicio07 pi)
+    putStrLn $ "Exercicio 08: " ++ show exercicio08
+    putStrLn $ "Exercicio 09: " ++ show exercicio09
+    putStrLn $ "Exercicio 10: " ++ show exercicio10
+    putStrLn $ "Exercicio 11: " ++ show (exercicio11 "Olá" "Mundo")
+    putStrLn $ "Exercicio 12: " ++ show (exercicio12 "0123456789")

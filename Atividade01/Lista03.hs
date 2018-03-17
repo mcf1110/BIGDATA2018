@@ -1,6 +1,6 @@
 -- Exercícios sobre Listas
-module Atividade03 where
-import Atividade02(ehPrimo)
+module Lista03 where
+import Lista02(ehPrimo)
 import Data.List (maximumBy)
 import Data.Ord(comparing)
 
@@ -85,6 +85,16 @@ exercicio07 = collatzLen
 Exercício 08: Encontre o número x entre 1 e 1.000.000 que tem a maior sequência de Collatz. (Project Euler 14)
 -}
 projectEuler14 :: Integer
-projectEuler14 = maximumBy  (comparing collatzLen) [1..1000000]
+projectEuler14 = maximumBy (comparing collatzLen) [1..1000000]
 
 exercicio08 = projectEuler14
+
+main = do
+    putStrLn $ "Exercicio 01: " ++ show (exercicio01 3 )
+    putStrLn $ "Exercicio 02: " ++ show (exercicio02)
+    putStrLn $ "Exercicio 03 (até o decimo el): " ++ show (take 10 exercicio03)
+    putStrLn $ "Exercicio 04: " ++ show (exercicio04)
+    putStrLn $ "Exercicio 05: " ++ show (exercicio05 [1,2] [3,4])
+    putStrLn $ "Exercicio 06: " ++ show (exercicio06 14)
+    putStrLn $ "Exercicio 07: " ++ show (exercicio07 2)
+    putStrLn $ "Exercicio 08: " ++ show (exercicio08)
