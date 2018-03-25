@@ -40,50 +40,58 @@ type HouseCondition = House -> Bool
 -- The Englishman lives in the red house.
 hc1 :: HouseCondition
 hc1 h@(House{nationality=Englishman}) = color h == Red
+hc1 House{color=Red} = False
 hc1 _ = True
     
 -- The Spaniard owns the dog.
 hc2 :: HouseCondition
 hc2 h@(House{nationality=Spaniard}) = pet h == Dog
+hc2 House{pet=Dog} = False
 hc2 _ = True
     
 -- Coffee is drunk in the green house.
 hc3 :: HouseCondition
 hc3 h@(House{drink=Coffee}) = color h == Green
+hc3 House{color=Green} = False
 hc3 _ = True
     
 -- The Ukrainian drinks tea.
 hc4 :: HouseCondition
 hc4 h@(House{drink=Tea}) = nationality h == Ukrainian
+hc4 House{nationality=Ukrainian} = False
 hc4 _ = True
 
 -- The Old Gold smoker owns snails.
 hc5 :: HouseCondition
 hc5 h@(House{smoke=OldGold}) = pet h == Snails
+hc5 House{pet=Snails} = False
 hc5 _ = True
 
 -- Kools are smoked in the yellow house.
 hc6 :: HouseCondition
 hc6 h@(House{smoke=Kools}) = color h == Yellow
+hc6 House{color=Yellow} = False
 hc6 _ = True
 
 -- The Lucky Strike smoker drinks orange juice.
 hc7 :: HouseCondition
 hc7 h@(House{smoke=LuckyStrike}) = drink h == OrangeJuice
+hc7 House{drink=OrangeJuice} = False
 hc7 _ = True
 
 -- The Japanese smokes Parliaments.
 hc8 :: HouseCondition
 hc8 h@(House{smoke=Parliament}) = nationality h == Japanese
+hc8 House{nationality=Japanese} = False
 hc8 _ = True
 
 isValidHouse :: HouseCondition
 isValidHouse h = and $ map ($ h) [hc1, hc2, hc3, hc4, hc5, hc6, hc7, hc8]
 
-allValidHouses :: [House] -- 570 casas, dá pra fazer (:
+allValidHouses :: [House] -- 78 casas, dá pra fazer (:
 allValidHouses = filter isValidHouse allPossibleHouses
 
-allPossibleSolutions :: [Solution]
+allPossibleSolutions :: [Solution] -- 78^5 = 2.887.174.368 ~ 2 bilhões de combinações
 allPossibleSolutions = [[a,b,c,d,e] | a <- allValidHouses, b <- allValidHouses, c <- allValidHouses, d <- allValidHouses, e <- allValidHouses]
 
 
@@ -93,7 +101,7 @@ isUnique []     = True
 isUnique (x:xs) = x `notElem` xs && isUnique xs
 
 differentAcrossAll :: Eq a => (House -> a) -> Solution -> Bool-- Guarantees that the functions returns differently for all Houses in a solution
-differentAcrossAll fn ls = isUnique $ map fn ls
+differentAcrossAll fn sol = isUnique $ map fn sol
 
 type SolutionCondition = Solution -> Bool
 
