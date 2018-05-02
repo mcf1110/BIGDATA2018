@@ -12,4 +12,4 @@ ou
 compila.sh ParseParallel
 ```
 
-Dependendo da versão que quiser rodar ;)
+dependendo da versão que quiser rodar ;)
