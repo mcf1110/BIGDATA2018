@@ -19,11 +19,11 @@ ordenaTuplaVal (a1,b1) (a2,b2)
   | b1 < b2 = LT
   | b1 > b2 = GT
   | b1 == b2  = EQ
-  
-agrupaTupla :: (Eq a) => (a, t0) -> (a, t1) -> Bool  
+
+agrupaTupla :: (Eq a) => (a, t0) -> (a, t1) -> Bool
 agrupaTupla (a1, b1) (a2, b2) = a1==a2
 
-agrupaVal :: (Eq a) => (t0, a) -> (t1, a) -> Bool  
+agrupaVal :: (Eq a) => (t0, a) -> (t1, a) -> Bool
 agrupaVal (a1, b1) (a2, b2) = b1==b2
 
 -- | funções para trabalhar com tuplas
@@ -36,39 +36,43 @@ groupByValue   =  groupBy agrupaVal
 
 -- | padrões de paralelismo
 --combine :: ((a,c) -> (a,b) -> (a,c)) -> [(a,b)] -> [(a,c)]
-combine :: Ord k 
+combine :: Ord k
         => (v -> v -> v) -> [(k, v)] -> [(k, v)]
 combine f xs = map (foldByKey' f) $ groupByKey $ sortByKey xs
 
-parmap :: NFData b 
+parmap :: NFData b
        => (a -> b) -> [a] -> [b]
 parmap f xs = (map f xs `using` parList rdeepseq)
 
-mapReduce :: NFData b 
+pmap :: NFData b => (a -> b) -> ChunksOf [a] -> ChunksOf [b]
+pmap f xs = (map f' xs
+                       `using` parList rdeepseq)
+  where
+    f' xi = map f xi
+
+mapReduce :: NFData b
           => (a -> b) -> (b -> b -> b) -> ChunksOf [a] -> b
 mapReduce f g xs = foldl1' g
                  $ (map f' xs
                        `using` parList rdeepseq)
   where
-    f' xi = foldl1' g $ map f xi                       
-    
+    f' xi = foldl1' g $ map f xi
 
-mapReduceByKey  :: (NFData k, NFData v, Ord k) 
+
+mapReduceByKey  :: (NFData k, NFData v, Ord k)
                 => (a -> (k, v)) -> (v -> v -> v) -> ChunksOf [a] -> [(k, v)]
-mapReduceByKey f g xs = combine g 
-                     $ concat 
-                     $ (map f' xs 
+mapReduceByKey f g xs = combine g
+                     $ concat
+                     $ (map f' xs
                           `using` parList rdeepseq)
   where
     f' xi = combine g $ map f xi
 
-takeOrdered :: (Ord k, NFData k, NFData v) 
-            => Int -> (a -> (k, v)) -> ChunksOf [a] -> [(k, v)]    
-takeOrdered k f xs = take k 
+takeOrdered :: (Ord k, NFData k, NFData v)
+            => Int -> (a -> (k, v)) -> ChunksOf [a] -> [(k, v)]
+takeOrdered k f xs = take k
                    $ sortByKey
-                   $ concat 
+                   $ concat
                    $ (map f' xs `using` parList rdeepseq)
-  where                   
+  where
     f' xi = take k $ sortByKey $ map f xi
-
-
