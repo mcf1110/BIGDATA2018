@@ -1,15 +1,15 @@
 # EM
 
-Para compilar os códigos, basta rodar 
+Para compilar os códigos, basta rodar
 
 ```
-compila.sh Parse
+compila.sh Main
 ```
 
 ou
 
 ```
-compila.sh ParseParallel
+compila.sh MainParallel
 ```
 
 dependendo da versão que quiser rodar ;)

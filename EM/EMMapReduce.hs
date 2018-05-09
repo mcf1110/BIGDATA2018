@@ -45,7 +45,6 @@ pointResposibilities mm x = z ./ sum z
         z = map (\(mix, gauss) -> mix * normal gauss x ) mm
 
 
--- Takes the dataset and a mixture model, and generates a matrix where each row is a gaussian and each column is a point, containing responsibilities
 eStep :: Dataset -> MixtureModel -> ChunksOf [(Datapoint, Responsibility)]
 eStep xs mm = pmap (\x -> (x, pointResposibilities mm x)) xs
 
@@ -77,8 +76,6 @@ mStep xrs = zip newPis $ zip newMus newSigmas
         (newMus, nks, n) = newMeanNkN xrs
         newPis = map (/n) nks
         newSigmas = newCovariance xrs (newMus, nks, n)
-
-
 
 nextIteration :: Dataset -> MixtureModel -> MixtureModel
 nextIteration xs mm = mStep $ eStep xs mm
