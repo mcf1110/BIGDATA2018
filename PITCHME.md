@@ -4,12 +4,12 @@
 
 ## Mistura de Gaussianas
 
-![Mistura de Gaussianas](https://angusturner.github.io/assets/images/mixture.png)
+![Mistura de Gaussianas](https://camo.githubusercontent.com/ad5d30ef629d6b98fe4c80041f06f5415d799c1c/687474703a2f2f626a6c6b656e672e6769746875622e696f2f696d616765732f676d6d2e706e67)
 
 +++
 
 ## Agrupamento com GMM
-![Dataset](https://angusturner.github.io/assets/images/synthetic.png)
++++?image=https://angusturner.github.io/assets/images/synthetic.png
 
 +++?video=https://angusturner.github.io/assets/video/output.webm
 
