@@ -9,7 +9,7 @@
 +++
 
 ## Agrupamento com GMM
-+++?image=https://angusturner.github.io/assets/images/synthetic.png
+![Dataset](https://angusturner.github.io/assets/images/synthetic.png)
 
 +++?video=https://angusturner.github.io/assets/video/output.webm
 
