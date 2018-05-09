@@ -30,3 +30,4 @@ main = do
     print $ ll finalMM - ll initialMM
     stop <- getTime Monotonic
     fprint (timeSpecs) start stop
+    putStrLn ""
