@@ -72,12 +72,11 @@ newCovariance xs (means, nks, _) =
 
 
 mStep :: ChunksOf [(Datapoint, Responsibility)] -> MixtureModel
-mStep xrs = map (\(mean, cov, mix) -> (mix, (mean, cov))) zipped
+mStep xrs = zip newPis $ zip newMus newSigmas
     where
         (newMus, nks, n) = newMeanNkN xrs
         newPis = map (/n) nks
         newSigmas = newCovariance xrs (newMus, nks, n)
-        zipped = zip3 newMus newSigmas newPis
 
 
 
