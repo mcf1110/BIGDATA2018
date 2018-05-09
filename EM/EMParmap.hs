@@ -1,4 +1,4 @@
-module EMParallel where
+module EMParmap where
 import Dados
 import Vector
 import Data.List (transpose, foldl1', intercalate)
